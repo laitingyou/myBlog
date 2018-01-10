@@ -17,7 +17,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-native": "^0.52.0",
-    "react-router-native": "^4.2.0"
+
   }
 }
