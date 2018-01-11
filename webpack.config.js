@@ -1,9 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-console.log(path.resolve(__dirname, 'build'))
 module.exports = {
-    entry: './src/index.js',
+    entry: path.resolve(__dirname, './src/index.js'),
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
@@ -27,14 +26,25 @@ module.exports = {
                 }
             },
             {
-                test: /\.css/,
-                use: ['style-loader','css-loader']
+                test: /\.css$|\.scss$/,
+                use:['style-loader','css-loader','sass-loader']
+            },
+            {
+                test: /\.(woff|woff2|svg|eot|ttf)$/,
+                use: ['file-loader']
+            },
+            {
+                test: /\.(jpg|jpeg|png|gif)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 8192
+                }
             }
         ]
     },
     devServer: {
-        contentBase: "./public",
+        contentBase: "./build",
         inline: true,
-        port: 8098
+        port: 8383
     },
 }
