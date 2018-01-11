@@ -1,6 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractSass = new ExtractTextPlugin({
+    filename: "[name].[contenthash].css",
+    disable: process.env.NODE_ENV === "development"
+});
 module.exports = {
     entry: path.resolve(__dirname, './src/index.js'),
     output: {
@@ -13,7 +18,8 @@ module.exports = {
             hash: true,
             template: './public/index.html',
             filename: 'index.html'
-        })
+        }),
+        extractSass
     ],
     module: {
         rules: [
@@ -26,8 +32,14 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$|\.scss$/,
-                use:['style-loader','css-loader','sass-loader']
+                test: /\.scss$/,
+                    use: [{
+                        loader: "style-loader"
+                    },{
+                        loader: "css-loader"
+                    }, {
+                        loader: "sass-loader"
+                    }]
             },
             {
                 test: /\.(woff|woff2|svg|eot|ttf)$/,
@@ -45,6 +57,6 @@ module.exports = {
     devServer: {
         contentBase: "./build",
         inline: true,
-        port: 8383
+        port: 8387
     },
 }
