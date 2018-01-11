@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-
+console.log(path.resolve(__dirname, 'build'))
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -11,27 +11,30 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
+            hash: true,
             template: './public/index.html',
             filename: 'index.html'
         })
     ],
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
+                options: {
                     presets: ['env', 'react']
                 }
             },
             {
                 test: /\.css/,
-                loader: 'style-loader!css-loader'
+                use: ['style-loader','css-loader']
             }
         ]
     },
     devServer: {
+        contentBase: "./public",
         inline: true,
-        port: 8089
+        port: 8098
     },
 }
