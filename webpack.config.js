@@ -2,10 +2,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[contenthash].css",
-    disable: process.env.NODE_ENV === "development"
-});
+// const extractSass = new ExtractTextPlugin({
+//     filename: "[name].[contenthash].css",
+//     disable: process.env.NODE_ENV === "development"
+// });
 module.exports = {
     entry: path.resolve(__dirname, './src/index.js'),
     output: {
@@ -19,7 +19,7 @@ module.exports = {
             template: './public/index.html',
             filename: 'index.html'
         }),
-        extractSass
+       /* extractSass*/
     ],
     module: {
         rules: [
@@ -32,15 +32,19 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
+                test: /\.css$|\.scss$/,
                     use: [{
-                        loader: "style-loader"
+                        loader: "style-loader?sourceMap"
                     },{
-                        loader: "css-loader"
+                        loader: "css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]"
                     }, {
-                        loader: "sass-loader"
+                        loader: "sass-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]"
                     }]
             },
+         /*   {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+            },*/
             {
                 test: /\.(woff|woff2|svg|eot|ttf)$/,
                 use: ['file-loader']
@@ -57,6 +61,6 @@ module.exports = {
     devServer: {
         contentBase: "./build",
         inline: true,
-        port: 8387
+        port: 8391
     },
 }

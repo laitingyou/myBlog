@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import './assets/index.scss'
+import styles from './assets/css/index.scss'
 
 class App extends Component {
     render() {
-        return <h1> Hello, world! </h1>
+        return <h1 className={styles.init}> Hello, world! </h1>
     }
 }
 
