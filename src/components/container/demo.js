@@ -6,3 +6,4 @@ class App extends Component {
         return <h1 className={styles.init}> Hello, world! </h1>
     }
 }
+export default App

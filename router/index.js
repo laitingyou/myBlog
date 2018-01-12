@@ -1,9 +1,8 @@
 import React from 'react'
-import {Router,Switch,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 
 /*--------------components---------*/
 import Demo from '../src/components/container/demo'
-
 const routers = [
     {
         path:'/',
@@ -13,7 +12,7 @@ const routers = [
 
 ]
 
-const RouterConfig=(
+const RouterConfig=() =>(
     <Router>
         <Switch>
             {
