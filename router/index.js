@@ -1,11 +1,33 @@
 import React from 'react'
-import {Router} from 'react-router-dom'
+import {Router,Switch,Route} from 'react-router-dom'
 
-const router = [
+/*--------------components---------*/
+import Demo from '../src/components/container/demo'
+
+const routers = [
     {
         path:'/',
-        component:''
+        component:Demo
     }
 
 
 ]
+
+const RouterConfig=(
+    <Router>
+        <Switch>
+            {
+                routers.map((route,index)=>(
+                        <Route
+                            key={index}
+                            path={route.path}
+                            exact={route.exact}
+                            component={route.component}
+                        />
+                ))
+            }
+        </Switch>
+    </Router>
+)
+
+export default RouterConfig

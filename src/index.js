@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import styles from './assets/css/index.scss'
+import Router from '../router/index'
 
-class App extends Component {
-    render() {
-        return <h1 className={styles.init}> Hello, world! </h1>
-    }
-}
 
 ReactDom.render(
-    <App />,
+    <Router />,
     document.getElementById('root')
 )
