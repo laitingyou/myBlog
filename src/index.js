@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import Router from '../router/index'
-
+import Router from './router/index'
+import {Provider} from 'react-redux'
+import store from './store'
+import 'normalize.css'
 
 ReactDom.render(
-    <Router />,
+    <Provider store={store}>
+        <Router />
+    </Provider>
+    ,
     document.getElementById('root')
 )
