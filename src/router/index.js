@@ -3,7 +3,7 @@ import {HashRouter,BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
 import createHistory from "history/createBrowserHistory"
 const history = createHistory()
 /*--------------components---------*/
-import Demo from '../components/container/demo'
+import Demo from '../components/container/Container'
 import Login from '../components/Page/Login'
 const routers = [
     {

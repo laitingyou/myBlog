@@ -7,21 +7,19 @@ import styles from '../../assets/css/index.scss'
 class Container extends Component {
     constructor(props){
         super(props)
-        console.log(props)
+    }
+    componentWillMount() {
+        console.log(31123123,this.props)
     }
     handleClick(e) {
         // this.props.dispatch(REDUCER(e.target.value))
         // console.log(this.props.history.push('/login'))
     }
     render() {
-        let {handleClick}=this
         return (
             <div>
-                <li><Link to="/login">Netflix</Link></li>
-                <input type='text' ref='input' onChange={demo=>this.handleClick(demo)}/>
-                <button onClick={demo=>this.handleClick(demo)}>
-                    Add
-                </button>
+                <h1>123213</h1>
+                {this.props.children}
             </div>
         )
     }

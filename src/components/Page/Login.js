@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {Link,withRouter} from 'react-router-dom'
+import Container from '../container/Container'
 class Login extends Component {
     constructor(props){
         super(props)
@@ -10,7 +11,10 @@ class Login extends Component {
     render() {
         console.log(this)
         return (
-            <h1>{this.props.result[0]}</h1>
+            <Container>
+                <h2>{this.props.result[0]}</h2>
+            </Container>
+
         )
     }
 
