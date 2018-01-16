@@ -19,8 +19,15 @@ module.exports = {
             template: './public/index.html',
             filename: 'index.html'
         }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: '"production"'
+                // NODE_ENV:'"development"'
+            }
+        })
        /* extractSass*/
     ],
+
     module: {
         rules: [
             {
@@ -61,6 +68,6 @@ module.exports = {
     devServer: {
         contentBase: "./build",
         inline: true,
-        port: 8391
+        port: 8000
     },
 }

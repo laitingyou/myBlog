@@ -1,6 +1,6 @@
-import {Component} from 'react'
+import React,{Component} from 'react'
 import {connect} from 'react-redux'
-
+import {Link,withRouter} from 'react-router-dom'
 class Login extends Component {
     constructor(props){
         super(props)
@@ -8,17 +8,17 @@ class Login extends Component {
 
 
     render() {
+        console.log(this)
         return (
-            <h1></h1>
+            <h1>{this.props.result[0]}</h1>
         )
     }
 
 
 }
 function select(state) {
-    console.log(state)
     return {
         result:state
     }
 }
-export default connect(select)(Login)
+export default withRouter(connect(select)(Login))

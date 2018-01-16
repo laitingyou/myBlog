@@ -1,24 +1,27 @@
 import React from 'react'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-
+import {HashRouter,BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
+import createHistory from "history/createBrowserHistory"
+const history = createHistory()
 /*--------------components---------*/
 import Demo from '../components/container/demo'
 import Login from '../components/Page/Login'
 const routers = [
     {
         path:'/',
-        component:Demo
+        component:Demo,
+        exact: true
     },
     {
         path:'/login',
-        component:Login
+        component:Login,
+        exact: false
     }
 
 
 ]
-
+let Router = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRouter;
 const RouterConfig=() =>(
-    <Router>
+    <Router history={history}>
         <Switch>
             {
                 routers.map((route,index)=>(
