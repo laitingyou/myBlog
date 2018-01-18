@@ -1,6 +1,7 @@
 import React, { Component,ReactDOM } from 'react';
 import {Link,withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import {REDUCER} from '../../store/actions'
 import styles from '../../assets/css/index.scss'
 
@@ -18,7 +19,7 @@ class Container extends Component {
     render() {
         return (
             <div>
-                <h1>123213</h1>
+                <header></header>
                 {this.props.children}
             </div>
         )

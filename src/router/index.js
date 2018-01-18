@@ -3,14 +3,14 @@ import {HashRouter,BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
 import createHistory from "history/createBrowserHistory"
 const history = createHistory()
 /*--------------components---------*/
-import Demo from '../components/container/Container'
+import Container from '../components/container/Container'
 import Login from '../components/Page/Login'
 const routers = [
-    {
-        path:'/',
-        component:Demo,
-        exact: true
-    },
+    // {
+    //     path:'/',
+    //     component:Demo,
+    //     exact: true
+    // },
     {
         path:'/login',
         component:Login,
@@ -22,7 +22,7 @@ const routers = [
 let Router = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRouter;
 const RouterConfig=() =>(
     <Router history={history}>
-        <Switch>
+        <Route path="/" component={Container}>
             {
                 routers.map((route,index)=>(
                         <Route
@@ -41,7 +41,7 @@ const RouterConfig=() =>(
                 ))
             }
             <Redirect from='' to="/" />
-        </Switch>
+        </Route>
     </Router>
 )
 
